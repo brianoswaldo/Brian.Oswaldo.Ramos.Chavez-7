@@ -1,0 +1,146 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{kpfonts}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\author{Brian Oswaldo Ramos Chavez}
+\title{Par de rotación y cuaternios}
+\date{17 de septiembre del 2019}
+\begin{document}
+\maketitle
+\section{Cuaterniones y rotación en el espacio}
+Los cuaterniones unitarios proporcionan una notación matemática para representar las orientaciones y las rotaciones de objetos en tres dimensiones. Comparados con los ángulos de Euler, son más simples de componer y evitan el problema del bloqueo del cardán. Comparados con las matrices de rotación, son más eficientes y más estables numéricamente. Los cuarteniones son útiles en aplicaciones de gráficos por computadora, robótica, navegación y mecánica orbital de satélites.
+\section{Euler, Rodrigues y rotaciones en $R^{3}$}
+El descubrimiento de Euler conocido como la identidad de los cuatro cuadrados, la cual dice que el producto de dos números, cada uno de los cuales es una suma de cuatro cuadrados, es, en sí, una suma de cuatro cuadrados.
+Más aun, un tratamiento estrictamente geométrico de las rotaciones en el espacio euclidiano tridimensional, lleva necesariamente, a una caraterización de las
+rotaciones en $R^{3}$ que está muy cerca del trabajo de Hamilton para representar estas rotaciones por medio de cuaternios. Este trabajo lo realizó el matemático francés Olinde Rodrigues (1795-1851) en 1840, antes del descubrimiento de los cuaternios por Hamilton en 1843.
+\\\\El enfoque de Euler es algebraico, no geométrico, y que no es constructivo. Esto es, que no provee expresiones para determinar el ángulo y eje de la rotación resultante. Sin embargo, Euler, es a menudo acreditado por la solución existencial, geométrica, y problemas constructivos concernientes a la composición de dos rotaciones.
+\\\\El problema que se acaba de describir está relacionado con otro aún más general:
+probar que el movimiento general de una esfera con centro fijo es una rotación, es decir, que cualquier movimiento de la esfera puede ser expresado como la composición o el producto de dos rotaciones. Éste resultado es el conocido como \textbf{¨Teorema de Euler¨}.
+\\\\Rodrigues provee, en su artículo, fórmulas para determinar el ángulo y el eje de la rotación resultante. Para llevar a cabo esto, él parametriza una rotación con cuatro parámetros. Si $\phi$ es el ángulo de rotación y $(n_{x},n_{y},n_{z})$ son las componentes del vector unitario que denota el eje de rotación, sus parámetros son:
+\\\begin{center}
+$cos\dfrac{1}{2}\phi,sin\dfrac{1}{2}\phi n_{x},sin\dfrac{1}{2}\phi n_{y},sin\dfrac{1}{2}\phi n_{z}$\\\end{center}
+La fórmula para la multiplicación que propuso Rodrigues es precisamente la regla de multiplicación de Hamilton para cuaternios. Esto nos dice que Rodrigues fue, en cierta manera, precursor de Hamilton. Uno de los resultados más importantes sobre rotaciones, el cual enunciamos a continuación, es el teorema de Euler. Este teorema nos asegura que toda rotación por un cierto ángulo en cualquier espacio deja fija una línea recta que es el eje de rotación.\\Si es R es una matriz que representa una rotación en $R^{3}$, entonces R tiene un vector propio \textbf{n} $\in R^{3}$ tal que:
+\begin{center}
+$R\textbf{n}=\textbf{n}$\end{center}
+Esto es,\textbf{n} es un vector propio con valor propio 1.
+\section{Ejemplo}
+Como R es una rotación, $R\in SO(3)\;y \;det(R)=1$.
+Además,\;$RR^{T}=I=RR^{-1}\; y \;R^{T}=R^{-1}\; \in\;SO(3)$.\\
+Por otro lado:\\
+$det[R-I]=det[(R-I)^{T}]=det[R^{T}-I]=det[R^{-1}-I]=det[-R^{-1}(R-1)]=(-1)det[R^{-1}(R-I)]=-det[R^{-1}]det[R-1=-det[R-I]$.\\\\
+Es decir,$det[R-I]=-det[R-I]$, por lo que $det(R-I)=0$.
+Luego, $R-I$ tiene núcleo distinto de cero y por lo tanto, existe $\textbf{n}\;\in R^{3}$ tal que $(R-I)\textbf{n}=0$.De esto se sigue que $R\textbf{n}=\textbf{n}$.\\\\
+Este teorema nos permite ver una secuencia de rotaciones sobre distintos ejes como una sola rotación alrededor de un eje pues cada rotación, al tener asociada una matriz, hace que la secuencia de ellas tenga, a su vez, asociada una sola matriz y usando el \textbf{teorema de Euler} sabemos que tiene un eje de rotación.
+\section{Relación entre rotaciones y cuaternios}
+Para entender la relación entre rotaciones en $R^{3}$ y los cuaternios, es conveniente utilizar la notacion $q=[\lambda\lambda,\alpha]$ para el cuaternio $q=\lambda+xi+yj+zk$, donde $\textbf{a}=xi+yj+zk$. La separacion del cuaternio q en dos partes nos permite distinguir su parte real $\lambda$ y su ¨parte imaginaria¨ \textbf{a}; además, identificamos el cuaternio puro $\textbf{a}=xi+yj+zk$ con el vector $\textbf{a}=(x,y,z)\; \in\;R^{3}$. De manera recíproca, dado un vector $\textbf{b}=(u,v,w \;\in\;R^{3})$, le hacemos corresponder el cuaternio $qb=[0,b]$, con $\textbf{b}=ui+vj+wk \;\in\; H_{p}$.\\
+De esta manera, dado los cuaternios $q=[\lambda,a]$ y $r=[\mu,b]$, definimos dos operaciones entre las partes  imaginarias de q y r: El producto punto y el producto cruz de los vectores \textbf{a},\textbf{b} $\in R^{3}$.\\\\En la definición (\textbf{a},\textbf{b}) $\in y\; \textbf{a}*\textbf{b}$ es otro cuaternio con parte real igual a cero y su ¨parte imaginaria¨ está dada por los componentes del vector \textbf{a}*\textbf{b}. Usando esta notación se tiene que el producto de los cuaternios $q=[\lambda,\textbf{a}] \; y\;r=[\mu,\textbf{b}]$ se expresa como:\\
+\begin{center}
+$q*r=[\lambda,\textbf{a}]*[\mu,\textbf{b}]=[\lambda\mu-(\textbf{a},\textbf{b}),\lambda\textbf{b}+\mu\textbf{a}+\textbf{a}*\textbf{b}]$
+\end{center}
+Esta fórmula nos será muy útil para describir la relación entre los cuaternios unitarios y las rotaciones en $R^{3}$.\\
+En efecto,supongamos que un vector $\textbf{v} \in R^{3}$ se rota en un ángulo $\alpha$ alrededor de un eje, determinado por un vector unitario $\textbf{n}=(n_{1},n_{2},n_{3})\; \in\;R^{3}$. Suponemos también que el giro es positivo, es decir, contrario al las manecillas del reloj. Sea \textbf{u} el vector que se obtiene de esta rotación.\\
+Con cada vector \textbf{v},\textbf{n} y \textbf{u} asociamos el cuaternio correspondiente:
+\begin{center}
+$q_{v}=[0,v],\;\; q_{n}=[0,n],\;\; q_{u}=[0,u]$
+\end{center}
+Sea q el cuaternio dado por:\\
+\begin{center}
+$q=[\lambda,\sigma n],\;\; con\gamma=cos(\alpha/2),\;\; \sigma=sen(\alpha/2)$
+\end{center}
+Si utilizamos las identidades $sen\;\alpha=2sen(\dfrac{\alpha}{2})cos(\dfrac{\alpha}{2})=2\sigma\gamma\; y \; 1-cos\;\alpha=2sen^{2}(\dfrac{\alpha}{2})=2\sigma^{2}$, la ecuación se escribe como:\\
+\begin{center}
+$q*qv*q^{-1}=v+(sen\;\alpha)n*v+(1-cos\;\alpha)n*(n*v)$
+\end{center}
+El lado derecho de la ecuación es equivalente a aplicar la siguiente matriz al vector v,
+\begin{center}
+$A=I+sen\theta \Lambda_{n}+(1-cos\theta)(\Lambda_{n})^{2}$\end{center}
+Donde:\begin{center}
+\[\Lambda_{n}=\begin{pmatrix}
+0 & -n_{3} & n_{2}\\
+n_{3} & 0 & -n_{1}\\
+-n_{2} & n_{1} & 0\\
+\end{pmatrix}
+\]\\
+\end{center}
+Utilizando la identidad $\textbf{n}*(\textbf{n}*\textbf{v})=[\textbf{n},\textbf{v}]\textbf{n}-[\textbf{n},\textbf{n]}\textbf{v}=[\textbf{n},\textbf{v}]\textbf{n}$ y tomando en cuenta que [n,n]=1, la ecuación se escribe como:
+$q*q_{v}*q^{-1}=cos\;\alpha\;\textbf{v}+sen\;\alpha(n*v)+1$.\\
+Así, $q*q_{v}*q^{-1}$ es un cuaternio con parte real igual a cero y por medio de la correspondencia definida arriba, se tiene:
+\begin{center}
+$q*q_{v}*q^{-1}\equiv q_{u}\mapsto\textbf{u}\mapsto cos\;\alpha\;\textbf{v}+sen\; \alpha(n*v)+(1-cos\;\alpha)[\textbf{n},\textbf{v})\textbf{n}$
+\end{center}
+Con esto se prueba que el producto de cuaternios $q*q_{v}*q^{-1}$, con $q_{v}$ y q, representa una rotación, por un ángulo $\alpha$, del vector \textbf{v} alrededor del eje \textbf{n}.\\
+Consideremos el cuaternio $q=[q_{0},\textbf{q}]$ con $\parallel q\parallel=1$. Si $\textbf{v}\;\in\; R^{3}$, se llegara a una expresión equivalente, la cual está dada por:
+\begin{center}
+$qq_{v}q^{-1}=[0,(q^{2}0-\parallel q\parallel^{2})\textbf{v}+2(\textbf{q}*\textbf{v})\textbf{q}+2q_{0}(\textbf{q}*\textbf{v})]$.
+\end{center}
+La matriz de rotación R correspondiente al cuaternio:
+\begin{center}
+$q=[\lambda,\sigma\textbf{n}]=\lambda+\sigma\;n_{1}\;i+\sigma\;n_{2}\;j+\sigma\;n_{3}\;k$\\
+$=cos(\alpha/2)+sen(\alpha/2)n_{1}i+sen(\alpha/2)n_{2}j+sen(\alpha/2)n_{3}k$\\
+$\equiv\lambda+xi+yj+zk$,
+\end{center}
+Se calcula del lado de para obtener $\textbf{u}=R\textbf{v}$,donde:
+\begin{center}
+\[R=\begin{pmatrix}
+1-2y^{2}-2z^{2} & 2xy-2\lambda z & 2xz+2\lambda y\\
+2xy+2\lambda z  & 1-2x^{2}-2z^{2}& 2yz-2\lambda x\\
+2xz-2\lambda y  & 2yz+2\lambda x  & 1-2x^{2}-2y^{2}\\
+\end{pmatrix}
+\]
+\end{center}
+La cual es presisamente la matriz de rotación $R(\alpha,\textbf{n})$ por sus valores dados y tomando en cuenta que $\lambda^{2}+x^{2}+y^{2}+z^{2}=1$.\\
+Otra representación de la matriz R es la siguiente. Al sustituir $q=(q_{0},q_{1},q_{2},q_{3})$ por:
+\begin{center}
+$q_{0}=cos(\theta/2)$,\\
+$q_{1}=n_{1}\;sen(\theta/2),$\\
+$q_{2}=n_{2}\;sen(\theta/2),$\\
+$q_{1}=n_{3}\;sen(\theta/2),$\\
+\end{center}
+y tomando en cuenta que $n_{1}+n^{2}+n^{3}=1$, tenemos que:
+\begin{center}
+\[R(q)=\begin{pmatrix}
+q_{0}+q_{1}-q_{2}-q_{3} & 2q_{1}q_{2}-2q_{0}q_{3} & 2q_{1}q_{3}+2q_{0}q_{2}\\
+2q_{1}q_{2}+2q_{0}q_{3} & q_{0}-q_{1}+q_{2}-q_{3} & 2q_{2}q_{3}+2q_{0}q_{1}\\
+2q_{1}q_{3}-2q_{0}q_{2} & 2q_{2}q_{3}+2q_{0}q_{1} & q_{0}-q_{1}+q_{2}+q_{3}\\
+\end{pmatrix}
+\]
+\end{center}
+Por otra parte, la composición de rotaciones se determina fácilmente mediante el producto de cuaternios. En efecto, si p y q son cuaternios unitarios que representan rotaciones y si $q_{v}$ es el cuaternio identificado con el vector \textbf{v}, entonces la rotación que define q que se logra mediante la identificacion del cuaternio $q_{\textbf{u}}=q*q_{\textbf{v}}*q^{-1}$ con el vector \textbf{u}, como se mostró con anterioridad. Este, a su vez, es modificado por la rotación representada por p:
+\begin{center}
+$p*q_{u}*p^{-1}=p*(q*q_{v}*q^{-1})*p^{-1}=(pq)*q_{v}*(q^{-1}p^{-1})=(p*q)*q_{v}*(p*q)^{-1}$
+\end{center}
+Esta ecuación muestra que la composición de rotaciones en $R^{3}$ se puede representar por medio del producto de cuaternios unitarios p*q.\\\\
+
+\section{Referencias}
+@article{del1999representacion,
+  title={La representaci{\'o}n de rotaciones mediante cuaterniones},
+  author={del Castillo, GF Torres},
+  journal={Miscelanea Matemtica},
+  pages={43--50},
+  year={1999}
+}\\\\
+@article{markelov2017uso,
+  title={Uso de Cuaterniones para Representar Rotaciones},
+  author={Markelov, Anatoli},
+  year={2017},
+  publisher={Tecnolog{\'\i}a Hoy}
+}\\\\
+@phdthesis{somma2018cuaterniones,
+  title={Cuaterniones y {\'a}ngulos de Euler para describir rotaciones en},
+  author={Somma, Francisco Javier},
+  year={2018},
+  school={UNIVERSIDAD ABIERTA INTERAMERICANA}
+}
+\bibliographystyle{apalike}
+\bibliography{Biblio}
+
+
+
+\end{document}
